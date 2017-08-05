@@ -6,6 +6,7 @@
 package server;
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
 /**
  *
@@ -39,7 +40,7 @@ public class Server {
 
     }
     
-    public static void main(String[] args) throws Exception {
+    private static void ServerTCP()throws Exception{
         ServerSocket serverSocket = new ServerSocket(60000, 100, InetAddress.getByName("localhost"));
         System.out.println("Server started  at:  " + serverSocket);
 
@@ -52,5 +53,28 @@ public class Server {
             Runnable runnable = () -> handleClientRequest(activeSocket);
             new Thread(runnable).start(); // start a new thread
         }
-  }
+    }
+    
+    public static void main(String[] args)  {
+        ArrayList<Integer> jogadores = new ArrayList <>();
+        
+        jogadores.add(1);
+        jogadores.add(2);
+        jogadores.add(3);
+        jogadores.add(4);
+        jogadores.add(5);
+        
+        Game teste = new Game(jogadores, 5);
+
+        teste.makePlay(1, HandStatus.ROCK);
+        teste.makePlay(3, HandStatus.ROCK);
+        teste.makePlay(5, HandStatus.ROCK);
+        teste.makePlay(7, HandStatus.ROCK);
+        teste.makePlay(9, HandStatus.SPOCK);
+
+
+        teste.checkHands();
+        
+
+    }
 }

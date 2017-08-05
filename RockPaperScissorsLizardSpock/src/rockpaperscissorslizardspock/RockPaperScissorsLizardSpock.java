@@ -29,8 +29,8 @@ public class RockPaperScissorsLizardSpock extends Application {
      */
     public static void main(String[] args) throws Exception {
 
-        ClientTCP.exec();
-        //launch(args);
+        //ClientTCP.exec();
+        launch(args);
     }
     
 }
