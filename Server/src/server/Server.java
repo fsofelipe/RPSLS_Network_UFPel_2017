@@ -56,24 +56,13 @@ public class Server {
     }
     
     public static void main(String[] args)  {
-        ArrayList<Integer> jogadores = new ArrayList <>();
+        Game teste = new Game(12, 34);
+
+        System.out.println(teste.makePlay(12, HandStatus.ROCK));
+        System.out.println(teste.makePlay(34, HandStatus.LIZARD));
+
+
         
-        jogadores.add(1);
-        jogadores.add(2);
-        jogadores.add(3);
-        jogadores.add(4);
-        jogadores.add(5);
-        
-        Game teste = new Game(jogadores, 5);
-
-        teste.makePlay(1, HandStatus.ROCK);
-        teste.makePlay(3, HandStatus.ROCK);
-        teste.makePlay(5, HandStatus.ROCK);
-        teste.makePlay(7, HandStatus.ROCK);
-        teste.makePlay(9, HandStatus.SPOCK);
-
-
-        teste.checkHands();
         
 
     }

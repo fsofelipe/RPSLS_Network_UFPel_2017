@@ -3,127 +3,119 @@ package server;
 import java.util.*;
 
 public class Game {
-    private ArrayList<Integer> connectedUsers = new ArrayList <Integer>();
-    private Hashtable <Integer, HandStatus> hands = new Hashtable <Integer, HandStatus>();
-    private int numPlayers;
-    ArrayList <Integer> winners = new ArrayList <Integer>();
-    
-    public Game(ArrayList<Integer> connectedUsers, int numPlayers){
-        this.numPlayers = numPlayers;
-        
-        if (numPlayers == connectedUsers.size()){
-            this.connectedUsers = connectedUsers;
-        }else{
-            System.out.println("ERRO QUANTIDADE DE JOGADORES INCORRETA");
-        }
-        
+    int userID_A, userID_B;
+    HandStatus handA, handB;
+    int whoPlays;
+    int timesPlayed;
+
+    public Game(int userID_A, int userID_B) {
+        this.userID_A = userID_A;
+        this.userID_B = userID_B;
+        this.whoPlays = userID_A; 
+        this.timesPlayed = 0;
     }
+    
     //RETURN THE RESULT OF THE BATTLE A X B
-    private Result check(HandStatus a, HandStatus b){
+    private Result check(){
         Result ret = Result.DRAW;
         
-        if (a == HandStatus.ROCK){
-            if (b == HandStatus.ROCK)
+        if (handA == HandStatus.ROCK){
+            if (handB == HandStatus.ROCK)
                 ret = Result.DRAW;
-            if (b == HandStatus.PAPER)
-                ret = Result.LOSE;
-            if (b == HandStatus.SPOCK)
-                ret = Result.LOSE;
-            if (b == HandStatus.LIZARD)
-                ret = Result.WIN;
-            if (b == HandStatus.SCISSORS)
-                ret = Result.WIN;
+            if (handB == HandStatus.PAPER)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.SPOCK)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.LIZARD)
+                ret = Result.WIN_A;
+            if (handB == HandStatus.SCISSORS)
+                ret = Result.WIN_A;
         }
         
-        if (a == HandStatus.PAPER){
-            if (b == HandStatus.PAPER)
+        if (handA == HandStatus.PAPER){
+            if (handB == HandStatus.PAPER)
                 ret = Result.DRAW;
-            if (b == HandStatus.SCISSORS)
-                ret = Result.LOSE;
-            if (b == HandStatus.LIZARD)
-                ret = Result.LOSE;
-            if (b == HandStatus.ROCK)
-                ret = Result.WIN;
-            if (b == HandStatus.SPOCK)
-                ret = Result.WIN;
+            if (handB == HandStatus.SCISSORS)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.LIZARD)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.ROCK)
+                ret = Result.WIN_A;
+            if (handB == HandStatus.SPOCK)
+                ret = Result.WIN_A;
         }
         
-        if (a == HandStatus.SCISSORS){
-            if (b == HandStatus.SCISSORS)
+        if (handA == HandStatus.SCISSORS){
+            if (handB == HandStatus.SCISSORS)
                 ret = Result.DRAW;
-            if (b == HandStatus.SPOCK)
-                ret = Result.LOSE;
-            if (b == HandStatus.ROCK)
-                ret = Result.LOSE;
-            if (b == HandStatus.LIZARD)
-                ret = Result.WIN;
-            if (b == HandStatus.PAPER)
-                ret = Result.WIN;
+            if (handB == HandStatus.SPOCK)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.ROCK)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.LIZARD)
+                ret = Result.WIN_A;
+            if (handB == HandStatus.PAPER)
+                ret = Result.WIN_A;
         }
         
-        if (a == HandStatus.LIZARD){
-            if (b == HandStatus.LIZARD)
+        if (handA == HandStatus.LIZARD){
+            if (handB == HandStatus.LIZARD)
                 ret = Result.DRAW;
-            if (b == HandStatus.SCISSORS)
-                ret = Result.LOSE;
-            if (b == HandStatus.ROCK)
-                ret = Result.LOSE;
-            if (b == HandStatus.PAPER)
-                ret = Result.WIN;
-            if (b == HandStatus.SPOCK)
-                ret = Result.WIN;
+            if (handB == HandStatus.SCISSORS)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.ROCK)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.PAPER)
+                ret = Result.WIN_A;
+            if (handB == HandStatus.SPOCK)
+                ret = Result.WIN_A;
         }
         
-        if (a == HandStatus.SPOCK){
-            if (b == HandStatus.SPOCK)
+        if (handA == HandStatus.SPOCK){
+            if (handB == HandStatus.SPOCK)
                 ret = Result.DRAW;
-            if (b == HandStatus.PAPER)
-                ret = Result.LOSE;
-            if (b == HandStatus.LIZARD)
-                ret = Result.LOSE;
-            if (b == HandStatus.ROCK)
-                ret = Result.WIN;
-            if (b == HandStatus.SCISSORS)
-                ret = Result.WIN;
+            if (handB == HandStatus.PAPER)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.LIZARD)
+                ret = Result.WIN_B;
+            if (handB == HandStatus.ROCK)
+                ret = Result.WIN_A;
+            if (handB == HandStatus.SCISSORS)
+                ret = Result.WIN_A;
         }
         return ret;
     }
     
-    private void allPlayed(){
-        winners.clear();
-        
-        for (int userA : connectedUsers){
-            System.out.println(userA);
-            
-            for(int userB : connectedUsers){
-                if (userA != userB){
-                    Result game = check(hands.get(userA), hands.get(userB));
- 
-                }
-            }
-            
-        }
-        
-
-        //numPlayers = winners.size();
-        
-    }
-    
+  
     //A PLAYER MAKES A PLAY, CHECKS IF 
-    public void makePlay(int playerID, HandStatus hand){
-        if (hands.containsKey(playerID) == true){
-            hands.remove(playerID);
+    //error messages:
+    // 0: no error / draw
+    //-1: invalid player
+    // playerID: winner
+    public int makePlay(int userID, HandStatus hand){
+        if (userID != whoPlays){
+            return -1;
         }
-        hands.put(playerID, hand);
-        
-        if (hands.size() == numPlayers)
-            allPlayed();
+        if (userID == userID_A){
+            handA = hand;
+        }else{
+            handB = hand;
+        }
+        timesPlayed++;
+        if ((timesPlayed % 2) == 0){
+            Result play = check();
+            if (play == Result.WIN_A)
+                return userID_A;
+            if (play == Result.WIN_B)
+                return userID_B;
+            if (play == Result.DRAW)
+                return 0; 
+        }else{
+            whoPlays = userID_B;
+            System.out.println("Game.makePlay: waiting for userB");
+        }
             
-        
+        return 0;
     }
     
-    public void checkHands(){
-        System.out.println("Hands: " + hands.toString());
-        System.out.println("Winners: " + winners.toString());
-    }
 }

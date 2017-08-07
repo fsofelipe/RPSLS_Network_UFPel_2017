@@ -1,7 +1,7 @@
 package server;
 public enum Result{
-    WIN,
-    LOSE,
+    WIN_A,
+    WIN_B,
     DRAW;
 }
 
