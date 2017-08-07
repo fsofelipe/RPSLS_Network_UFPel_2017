@@ -7,7 +7,7 @@ Game:
 
 
 scene builder (GUI):
-http://gluonhq.com/products/scene-builder/
+http://www.oracle.com/technetwork/java/javafxscenebuilder-1x-archive-2199384.html
 
 
 Rules:
