@@ -52,7 +52,9 @@ public class MainController implements Initializable {
     @FXML
     private JFXButton playAgainButton;
     @FXML
-    private AudioClip mediaPlayer;
+    private AudioClip mediaPlayer1;
+    @FXML
+    private AudioClip mediaPlayer2;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -61,8 +63,8 @@ public class MainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        mediaPlayer = new AudioClip(new File("Heman.mp3").toURI().toString());
-        mediaPlayer.stop();
+        mediaPlayer1 = new AudioClip(new File("Heman.mp3").toURI().toString());
+        mediaPlayer2 = new AudioClip(new File("Hello.mp3").toURI().toString());
     }    
 
     @FXML
@@ -79,6 +81,8 @@ public class MainController implements Initializable {
         root = FXMLLoader.load(getClass().getResource("InterfaceJogo.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        mediaPlayer1.stop();
+        mediaPlayer2.stop();
         stage.show();
     }
 
@@ -108,6 +112,8 @@ public class MainController implements Initializable {
      
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        mediaPlayer1.stop();
+        mediaPlayer2.stop();
         stage.show();
     }
     
@@ -120,7 +126,8 @@ public class MainController implements Initializable {
         double ran = random();
         Stage stage;
         Parent root;
-        
+        mediaPlayer1.stop();
+        mediaPlayer2.stop();
         if(event.getSource()==rockButton || event.getSource()==paperButton || event.getSource()==scissorsButton || event.getSource()==lizardButton || event.getSource()==spockButton){
             JFXButton aux = (JFXButton) event.getSource();
             if(ran > 0 && ran < 0.3){
@@ -128,6 +135,8 @@ public class MainController implements Initializable {
                 root = FXMLLoader.load(getClass().getResource("WinScreen.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
+                mediaPlayer1.play();
+                mediaPlayer2.stop();
                 stage.show();
             }
             else if(ran >= 0.3 && ran < 0.6){
@@ -135,6 +144,8 @@ public class MainController implements Initializable {
                 root = FXMLLoader.load(getClass().getResource("LooseScreen.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
+                mediaPlayer2.play();
+                mediaPlayer1.stop();
                 stage.show();
             }   
             else{
@@ -142,6 +153,8 @@ public class MainController implements Initializable {
                 root = FXMLLoader.load(getClass().getResource("TieScreen.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
+                mediaPlayer1.stop();
+                mediaPlayer2.stop();
                 stage.show();
             }
         }
@@ -151,6 +164,8 @@ public class MainController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("InterfaceJogo.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
+            mediaPlayer1.stop();
+            mediaPlayer2.stop();
             stage.show();
         }
     }
@@ -163,7 +178,8 @@ public class MainController implements Initializable {
         //se n ganhou, vai pra tela de jogar novamente
         Stage stage;
         Parent root;
-        
+        mediaPlayer1.stop();
+        mediaPlayer2.stop();
         if(event.getSource()==homeButton){
             stage = (Stage) homeButton.getScene().getWindow(); 
             root = FXMLLoader.load(getClass().getResource("Main.fxml"));  
@@ -180,10 +196,12 @@ public class MainController implements Initializable {
     }
     @FXML
     private void playMusic(ActionEvent event) throws IOException{
-        mediaPlayer = new AudioClip(new File("Heman.mp3").toURI().toString());
+        
+        
+        /*medi  aPlayer = new AudioClip(new File("Heman.mp3").toURI().toString());
         mediaPlayer.play();
         
         mediaPlayer = new AudioClip(new File("Hello.mp3").toURI().toString());
-        mediaPlayer.play();
+        mediaPlayer.play();*/
     }
 }
