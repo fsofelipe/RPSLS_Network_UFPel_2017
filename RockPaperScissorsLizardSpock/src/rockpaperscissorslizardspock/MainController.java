@@ -55,6 +55,12 @@ public class MainController implements Initializable {
     private AudioClip mediaPlayer1;
     @FXML
     private AudioClip mediaPlayer2;
+    @FXML
+    private AudioClip mediaPlayer3;
+    @FXML
+    private AudioClip mediaPlayer4;
+    @FXML
+    private AudioClip mediaPlayer5;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -65,6 +71,11 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         mediaPlayer1 = new AudioClip(new File("Heman.mp3").toURI().toString());
         mediaPlayer2 = new AudioClip(new File("Hello.mp3").toURI().toString());
+        mediaPlayer3 = new AudioClip(new File("FinalCountdownChorus.mp3").toURI().toString());
+        mediaPlayer4 = new AudioClip(new File("MortalKombat.mp3").toURI().toString());
+        mediaPlayer5 = new AudioClip(new File("carretaFuracao.mp3").toURI().toString());
+        
+        mediaPlayer3.play();
     }    
 
     @FXML
@@ -83,6 +94,9 @@ public class MainController implements Initializable {
         stage.setScene(scene);
         mediaPlayer1.stop();
         mediaPlayer2.stop();
+        mediaPlayer3.stop();
+        mediaPlayer4.play();
+        mediaPlayer5.stop();
         stage.show();
     }
 
@@ -100,6 +114,11 @@ public class MainController implements Initializable {
         }        
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        mediaPlayer1.stop();
+        mediaPlayer2.stop();
+        mediaPlayer3.stop();
+        mediaPlayer4.stop();
+        mediaPlayer5.stop();
         stage.show();
     }
     
@@ -114,6 +133,9 @@ public class MainController implements Initializable {
         stage.setScene(scene);
         mediaPlayer1.stop();
         mediaPlayer2.stop();
+        mediaPlayer3.play();
+        mediaPlayer4.stop();
+        mediaPlayer5.stop();
         stage.show();
     }
     
@@ -128,6 +150,9 @@ public class MainController implements Initializable {
         Parent root;
         mediaPlayer1.stop();
         mediaPlayer2.stop();
+        mediaPlayer3.stop();
+        mediaPlayer4.play();
+        mediaPlayer5.stop();
         if(event.getSource()==rockButton || event.getSource()==paperButton || event.getSource()==scissorsButton || event.getSource()==lizardButton || event.getSource()==spockButton){
             JFXButton aux = (JFXButton) event.getSource();
             if(ran > 0 && ran < 0.3){
@@ -137,6 +162,9 @@ public class MainController implements Initializable {
                 stage.setScene(scene);
                 mediaPlayer1.play();
                 mediaPlayer2.stop();
+                mediaPlayer3.stop();
+                mediaPlayer4.stop();
+                mediaPlayer5.stop();
                 stage.show();
             }
             else if(ran >= 0.3 && ran < 0.6){
@@ -146,6 +174,9 @@ public class MainController implements Initializable {
                 stage.setScene(scene);
                 mediaPlayer2.play();
                 mediaPlayer1.stop();
+                mediaPlayer3.stop();
+                mediaPlayer4.stop();
+                mediaPlayer5.stop();
                 stage.show();
             }   
             else{
@@ -155,6 +186,9 @@ public class MainController implements Initializable {
                 stage.setScene(scene);
                 mediaPlayer1.stop();
                 mediaPlayer2.stop();
+                mediaPlayer3.stop();
+                mediaPlayer4.stop();
+                mediaPlayer5.play();
                 stage.show();
             }
         }
@@ -166,6 +200,9 @@ public class MainController implements Initializable {
             stage.setScene(scene);
             mediaPlayer1.stop();
             mediaPlayer2.stop();
+            mediaPlayer3.stop();
+            mediaPlayer4.play();
+            mediaPlayer5.stop();
             stage.show();
         }
     }
@@ -180,6 +217,9 @@ public class MainController implements Initializable {
         Parent root;
         mediaPlayer1.stop();
         mediaPlayer2.stop();
+        mediaPlayer3.play();
+        mediaPlayer4.stop();
+        mediaPlayer5.stop();
         if(event.getSource()==homeButton){
             stage = (Stage) homeButton.getScene().getWindow(); 
             root = FXMLLoader.load(getClass().getResource("Main.fxml"));  
