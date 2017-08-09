@@ -6,6 +6,7 @@
 package rockpaperscissorslizardspock;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.File;
 import java.io.IOException;
 import static java.lang.Math.random;
 import java.net.URL;
@@ -17,8 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 /**
@@ -51,6 +51,8 @@ public class MainController implements Initializable {
     private JFXButton homeButton;
     @FXML
     private JFXButton playAgainButton;
+    @FXML
+    private AudioClip mediaPlayer;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -59,7 +61,8 @@ public class MainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        mediaPlayer = new AudioClip(new File("Heman.mp3").toURI().toString());
+        mediaPlayer.stop();
     }    
 
     @FXML
@@ -74,7 +77,6 @@ public class MainController implements Initializable {
         JFXButton aux = (JFXButton) event.getSource();
         stage = (Stage) aux.getScene().getWindow(); 
         root = FXMLLoader.load(getClass().getResource("InterfaceJogo.fxml"));
-     
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -121,24 +123,36 @@ public class MainController implements Initializable {
         
         if(event.getSource()==rockButton || event.getSource()==paperButton || event.getSource()==scissorsButton || event.getSource()==lizardButton || event.getSource()==spockButton){
             JFXButton aux = (JFXButton) event.getSource();
-            if(ran > 0.5){
+            if(ran > 0 && ran < 0.3){
                 stage = (Stage) aux.getScene().getWindow(); 
                 root = FXMLLoader.load(getClass().getResource("WinScreen.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }
-            else{
+            else if(ran >= 0.3 && ran < 0.6){
                 stage = (Stage) aux.getScene().getWindow(); 
                 root = FXMLLoader.load(getClass().getResource("LooseScreen.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }   
+            else{
+                stage = (Stage) aux.getScene().getWindow(); 
+                root = FXMLLoader.load(getClass().getResource("TieScreen.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
         }
         else{
             JFXButton aux = (JFXButton) event.getSource();
             stage = (Stage) aux.getScene().getWindow(); 
             root = FXMLLoader.load(getClass().getResource("InterfaceJogo.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
-        
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
     
     @FXML
@@ -163,5 +177,13 @@ public class MainController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    @FXML
+    private void playMusic(ActionEvent event) throws IOException{
+        mediaPlayer = new AudioClip(new File("Heman.mp3").toURI().toString());
+        mediaPlayer.play();
+        
+        mediaPlayer = new AudioClip(new File("Hello.mp3").toURI().toString());
+        mediaPlayer.play();
     }
 }

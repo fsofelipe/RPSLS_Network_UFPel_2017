@@ -1,0 +1,63 @@
+.AnchorPane{
+	-fx-background-color: #599494;
+}
+.Buttons{
+	-fx-background-color: white;
+	-fx-font-family: verdana;
+}
+
+.Regras{
+	-fx-color: #225661;
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
+	-fx-font-family: verdana;
+}
+.Regras#Regra{
+	-fx-font-size: 12px;
+	-fx-font-family: verdana;
+}
+.lizard{
+	-fx-background-image: url("images/lizard.png");
+	-fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+}
+.rock{
+	-fx-background-image: url("images/rock.png");
+	-fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+}
+.paper{
+	-fx-background-image: url("images/paper.png");
+	-fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+}
+.scissors{
+	-fx-background-image: url("images/scissors.png");
+	-fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+}
+.spock{
+	-fx-background-image: url("images/spock.png");
+	-fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+}
+
+.refresh{
+	-fx-background-image: url("images/refresh.png");
+	-fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+}
+
+.home{
+	-fx-background-image: url("images/homepage.png");
+	-fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+}
+
+.aguarde{
+	-fx-color: black;
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
+	-fx-font-family: verdana;
+	-fx-text-align: center;
+}

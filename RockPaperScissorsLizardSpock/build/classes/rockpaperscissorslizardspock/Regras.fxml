@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="700.0" styleClass="AnchorPane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rockpaperscissorslizardspock.MainController">
+    <children>
+      <AnchorPane prefHeight="350.0" prefWidth="330.0">
+         <children>
+            <ImageView fitHeight="350.0" fitWidth="351.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../style/images/1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="350.0" prefHeight="350.0" prefWidth="350.0">
+         <children>
+              <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="17.0" minHeight="16" minWidth="69" prefHeight="81.0" prefWidth="330.0" styleClass="AnchorPane" stylesheets="@../style/style.css" text="Pedra, Papel, Tesoura, Lagarto ou Spock" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="20.0" layoutY="111.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Regras" text="Regras" wrappingWidth="263.888671875" />
+            <Text id="Regra" layoutX="20.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Regras" text="- Tesoura corta papel&#10;- Papel cobre pedra&#10;- Pedra esmaga lagarto&#10;- Lagarto envenena Spock&#10;- Spock esmaga (ou derrete) tesoura&#10;- Tesoura decapita lagarto&#10;- Lagarto come papel&#10;- Papel refuta Spock&#10;- Spock vaporiza pedra&#10;- Pedra quebra tesoura" wrappingWidth="263.888671875" />
+            <JFXButton fx:id="backButton" layoutX="44.0" layoutY="296.0" onAction="#backButtonAction" prefHeight="38.0" prefWidth="266.0" styleClass="Buttons" stylesheets="@../style/style.css" text="Voltar" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

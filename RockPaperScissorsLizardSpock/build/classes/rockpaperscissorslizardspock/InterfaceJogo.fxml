@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="700.0" styleClass="AnchorPane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rockpaperscissorslizardspock.MainController">
+    <children>
+      <JFXButton fx:id="rockButton" buttonType="RAISED" layoutX="43.0" layoutY="122.0" onAction="#gameAction" prefHeight="106.0" prefWidth="105.0" styleClass="rock" />
+      <JFXButton fx:id="paperButton" buttonType="RAISED" layoutX="172.0" layoutY="122.0" onAction="#gameAction" prefHeight="106.0" prefWidth="105.0" styleClass="paper" />
+      <JFXButton fx:id="scissorsButton" buttonType="RAISED" layoutX="298.0" layoutY="122.0" onAction="#gameAction" prefHeight="106.0" prefWidth="105.0" styleClass="scissors" />
+      <JFXButton fx:id="lizardButton" buttonType="RAISED" layoutX="427.0" layoutY="122.0" onAction="#gameAction" prefHeight="106.0" prefWidth="105.0" styleClass="lizard" />
+      <JFXButton fx:id="spockButton" buttonType="RAISED" layoutX="558.0" layoutY="122.0" onAction="#gameAction" prefHeight="106.0" prefWidth="105.0" styleClass="spock" />
+      <Label fx:id="gameTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="5.0" minHeight="16" minWidth="69" prefHeight="43.0" prefWidth="682.0" styleClass="AnchorPane" stylesheets="@../style/style.css" text="Pedra, Papel, Tesoura, Lagarto ou Spock" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+      </Label>
+      <Text layoutX="266.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Regras" text="Choose Your Destiny:" textAlignment="CENTER" />
+    </children>
+</AnchorPane>
